@@ -47,12 +47,10 @@ Para verificar a instalação do Go:
 go version
 ```
 
-### Instalando Dependências
-
-Inicialize o módulo Go e baixe as dependências:
-
+### Clone o Repositório e Navegue para a pasta
 ```bash
-go mod tidy
+git clone https://github.com/LuisGaravaso/desafios-fullcycle.git
+cd desafios-fullcycle/Goexpert\ -\ Multithreading/
 ```
 
 ### Compilar e Executar
@@ -80,7 +78,7 @@ go run main.go <CEP> [<CEP> ...] [opções de saída]
 3. **Consulta com saída crua da API:**
 
    ```bash
-   go run main.go -raw 01001-000
+   go run main.go 01001-000 -raw
    ```
 
 #### Exemplo de Saída em Texto
