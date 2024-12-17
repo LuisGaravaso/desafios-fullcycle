@@ -120,7 +120,8 @@ meu-projeto/
 │   └── request.go      # Função para realizar requisições HTTP
 │
 ├── utils/
-│   └── helpers.go      # Funções auxiliares (ex: validação de CEP)
+│   └── argsparsers.go      # Funções auxiliaraes para validação dos Argumentos passados no Terminal
+│   └── cepparser.go      # Funções auxiliaraes para validação dos CEPs
 │
 └── handlers/
     └── process.go      # Função para processar CEPs e formatar a saída
