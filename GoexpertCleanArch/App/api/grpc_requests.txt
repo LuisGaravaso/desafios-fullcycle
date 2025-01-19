@@ -1,0 +1,41 @@
+$ evans -r repl
+$ package pb
+
+# Creating an Order
+$ service CreateOrderService 
+
+$ call CreateOrder
+
+id (TYPE_STRING) => created-with-grpc
+price (TYPE_FLOAT) => 2000
+tax (TYPE_FLOAT) => 300.50
+
+{
+  "finalPrice": 2300.5,
+  "id": "created-with-grpc",
+  "price": 2000,
+  "tax": 300.5
+}
+
+# Getting Orders 
+$ service GetOrderService
+
+# Getting All Orders
+$ call GetAllOrders
+
+# Getting an Existing Order
+$ call GetOrderById
+id (TYPE_STRING) => created-with-grpc
+{
+  "finalPrice": 2300.5,
+  "id": "created-with-grpc",
+  "price": 2000,
+  "tax": 300.5
+  "exists": true
+}
+
+# Getting an Order that does not Exist
+$ call GetOrderByIdid 
+(TYPE_STRING) => this-id-does-not-exist
+{}
+

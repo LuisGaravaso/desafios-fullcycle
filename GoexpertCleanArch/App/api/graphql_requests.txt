@@ -1,0 +1,42 @@
+mutation CreateOrder {
+  createOrder(input: {
+    id: "created-with-graphql"
+    price: 4000
+    tax: 400.50
+  }) {
+    id
+    price
+    tax
+    final_price
+  }
+}
+
+
+query GetOrders {
+  orders {
+    id
+    price
+    tax
+    final_price
+  }
+}
+
+query GetExistingOrderId {
+  order(id: "created-with-graphql") {
+    id
+    price
+    tax
+    final_price
+    exists
+  }
+}
+
+query GetNonExistingOrderId {
+  order(id: "this-id-does-not-exist") {
+    id
+    price
+    tax
+    final_price
+    exists
+  }
+}

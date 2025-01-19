@@ -1,0 +1,25 @@
+#### Create Order
+POST http://localhost:8000/order HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "id":"created-with-http-request",
+    "price": 1000,
+    "tax": 150
+}
+
+#### Get All Orders
+GET http://localhost:8000/orders HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+#### Get Order By Id
+GET http://localhost:8000/order/created-with-http-request HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+#### Get Order That Does not Exist
+GET http://localhost:8000/order/this-id-does-not-exist HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json

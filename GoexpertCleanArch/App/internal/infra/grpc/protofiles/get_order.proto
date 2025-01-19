@@ -1,0 +1,15 @@
+syntax = "proto3";
+package pb;
+
+option go_package = "internal/infra/grpc/pb";
+
+import "internal/infra/grpc/protofiles/shared.proto";
+
+message GetOrderByIdRequest {
+  string id = 1;
+}
+
+service GetOrderService {
+  rpc GetOrderById(GetOrderByIdRequest) returns (Order);
+  rpc GetAllOrders(Blank) returns (GetOrdersResponse);
+}
