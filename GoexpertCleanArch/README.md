@@ -96,6 +96,11 @@ CleanArch/
     2025/01/19 10:36:52 Servers ready to use!
     ```
 
+5. **Keep this Terminal Running**
+   
+   If you close this terminal window, the program will shut down.
+   
+   Continue on a different terminal tab or proper platform for API requests.
 ---
 
 ## **RabbitMQ Configuration**
@@ -116,42 +121,43 @@ For detailed instructions, see [RabbitMQ Setup Guide](Readme/RabbitMQ.md).
 ### **REST API**
 
 - **Base URL**: `http://localhost:8000`
-- Test with provided requests in `App/api/http_requests.http`.
+- You can test the Requests from `App/api/http_requests.http` on VS Code, Postman or your favorite platform that deals with HTTP Requests.
+- Or type the following `cURL` requests on the terminal.
 
-#### Example Requests
+#### Example Requests with cURL 
 
 **Create Order**:
-```http
-POST http://localhost:8000/order HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
-
-{
+```bash
+curl -X POST \
+  http://localhost:8000/order \
+  -H "Content-Type: application/json" \
+  -d '{
     "id": "created-with-http-request",
     "price": 1000,
     "tax": 150
-}
+}'
+
 ```
 
 **Get All Orders**:
-```http
-GET http://localhost:8000/orders HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
+```bash
+curl -X GET \
+  http://localhost:8000/orders \
+  -H "Content-Type: application/json"
 ```
 
 **Get Order by ID**:
-```http
-GET http://localhost:8000/order/created-with-http-request HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
+```bash
+curl -X GET \
+  http://localhost:8000/order/created-with-http-request \
+  -H "Content-Type: application/json"
 ```
 
 **Get Non-Existent Order**:
-```http
-GET http://localhost:8000/order/this-id-does-not-exist HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
+```bash
+curl -X GET \
+  http://localhost:8000/order/this-id-does-not-exist \
+  -H "Content-Type: application/json"
 ```
 
 ---
