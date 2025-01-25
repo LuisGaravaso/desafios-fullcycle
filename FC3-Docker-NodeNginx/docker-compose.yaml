@@ -1,0 +1,53 @@
+## Docker Compose for Mysql
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fullcycle
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      #Init Script to create Table if does not exist
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      #Persist Data
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - app_network
+
+  backend:
+    container_name: node
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - db
+    networks:
+      - app_network
+
+  nginx:
+    container_name: nginx
+    image: nginx:1.17
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+

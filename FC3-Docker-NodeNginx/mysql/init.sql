@@ -1,0 +1,2 @@
+USE fullcycle;
+CREATE TABLE IF NOT EXISTS people (id VARCHAR(36) PRIMARY KEY, name VARCHAR(100));
