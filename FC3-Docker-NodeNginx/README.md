@@ -69,6 +69,9 @@ Once the server is working properly, you should see a page like this:
 │   ├── default.conf      # Reverse proxy settings for Nginx
 ├── mysql/                # MySQL configuration and initialization
 │   ├── init.sql          # SQL script to initialize the database
+├── readme/               # Folder with images for the README file
+│   ├── image.png         # Image used in the README file
+│   README.md             # This README file
 ```
 
 ---
