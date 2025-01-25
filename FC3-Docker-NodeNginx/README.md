@@ -137,7 +137,7 @@ For troubleshooting, you can view logs for any service:
 docker-compose logs -f nginx
 
 # View Node.js backend logs
-docker-compose logs -f backend
+docker-compose logs -f node
 
 # View MySQL logs
 docker-compose logs -f db
