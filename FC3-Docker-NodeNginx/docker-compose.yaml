@@ -28,7 +28,8 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - ./backend:/app/backend
+      - ./backend:/app
+      - /app/node_modules
     depends_on:
       - db
     networks:
