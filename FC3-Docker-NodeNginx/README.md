@@ -43,8 +43,11 @@ This project demonstrates the integration of **Nginx** as a reverse proxy, **Nod
 
 **4. Note it might take a while to build the MySQL database**
 
-   If you access http://localhost:8080 and get "Internal Server Error", wait a few seconds and reload the page.
-   That happens because the MySQL database is still setting up
+   If you access http://localhost:8080 and the page is still not available it is because the docker-compose only starts the Node and the Nginx after the MySQL database finishes its setup.
+   Wait a few seconds or until the container is healthy.
+   You will know the container is healthy when you see these logs on the terminal.
+
+   <img src="./readme/ContainerUp.png" width="400">
 
 **5. Everytime you Refresh the page, a new person will be displayed and added to the database**
 

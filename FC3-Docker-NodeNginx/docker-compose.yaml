@@ -1,5 +1,3 @@
-## Docker Compose for Mysql
-
 services:
   db:
     image: mysql:5.7
@@ -13,12 +11,17 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      #Init Script to create Table if does not exist
+      # Init Script to create Table if does not exist
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-      #Persist Data
+      # Persist Data
       - ./mysql/data:/var/lib/mysql
     networks:
       - app_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     container_name: node
@@ -31,7 +34,8 @@ services:
       - ./backend:/app
       - /app/node_modules
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - app_network
 
@@ -50,5 +54,3 @@ services:
 networks:
   app_network:
     driver: bridge
-
-
